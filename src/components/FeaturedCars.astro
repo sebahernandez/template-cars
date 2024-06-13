@@ -1,0 +1,75 @@
+---
+import CardVehicule from  "./CardVehicule.astro"
+import {getCars} from '../services/automotive';
+
+const autos = await getCars();
+---
+<section class="p-4">
+    <h2 class="text-xl md:text-4xl font-bold mb-4 text-center">Destacados</h2>
+
+    <div id="slider3" class="splide mx-2 md:my-10" aria-label="Splide Basic HTML Example" >
+        <div class="splide__track">
+              <ul class="splide__list">
+                    {autos.map((auto) => (
+                         <li class="splide__slide">
+                          <CardVehicule {...auto} key={auto.id} />
+                        </li>
+                    ))}
+              </ul>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    import "@splidejs/splide/css";
+    import Splide from "@splidejs/splide";
+    
+let autos = new Splide("#slider3", {
+  type: "loop",
+  focus: "center",
+  gap: "2px",
+  autoplay: true,
+  interval: 5000,
+  pauseOnHover: false,
+  perPage: 3,
+  pagination:false,
+  breakpoints: {
+    468: {
+      perPage: 1,
+      gap: '10px', // Ajusta el espacio entre las tarjetas en pantallas pequeñas
+    },
+    768: {
+      perPage: 2,
+      gap: '10px', // Ajusta el espacio entre las tarjetas en pantallas medianas
+    },
+    1024: {
+      perPage: 3,
+      gap: '10px', // Ajusta el espacio entre las tarjetas en pantallas grandes
+    },
+  },
+});
+  autos.mount();
+</script>
+
+<style>
+    #slider3 {
+  max-width: 1400px; /* Ajusta esto según el tamaño deseado */
+  margin: 0 auto;
+}
+
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Ajusta el padding para espaciar las tarjetas */
+  box-sizing: border-box;
+
+}
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Opcional: Añade bordes redondeados a las imágenes */
+}
+</style>

@@ -1,0 +1,85 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+	<Footer />
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: "Glegoo";
+    src: url("/fonts/Glegoo-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Glegoo";
+    src: url("/fonts/Glegoo-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  :root {
+    --bgcolor: #111b28;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: var(--bgcolor);
+  }
+
+  body {
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #4b5563;
+    --sb-size: 14px;
+  }
+
+  body::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Glegoo", sans-serif;
+    font-weight: bold;
+  }
+
+
+</style>

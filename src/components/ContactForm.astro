@@ -1,0 +1,89 @@
+---
+
+---
+
+<div class="flex flex-col justify-center items-center py-10 md:justify-center md:items-center md:py-36">
+    <h2 class="text-5xl font-bold mb-6 text-center text-white">Contáctanos</h2>
+    <form method="POST" id="form" class="space-y-4 bg-white p-8 rounded-lg shadow-md w-full max-w-xl">
+        <input type="hidden" name="access_key" value="5313b50e-174f-4128-b25a-ea059dd281af">
+       
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" name="name" id="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+            <input type="tel" name="phone" id="phone" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+            <textarea name="message" id="message" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Enviar mensaje</button>
+
+            <input type="hidden" name="subject" value="Mensaje enviado desde formulario web">
+            <input type="hidden" name="from_name" value="Notificación Sitio Web">
+            <input type="hidden" name="redirect" value="/">
+        </div>
+        <div id="result" class="text-center mt-4"></div>
+        <div class="h-captcha" data-captcha="true"></div>
+    </form>
+</div>
+
+
+<script>
+    const form = document.getElementById('form') as HTMLFormElement;
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(e) {
+        const formData = new FormData(form);
+        e.preventDefault();
+
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        result.innerHTML = "Un momento por favor...";
+        result.className = "text-gray-600";
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json,
+            
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status === 200) {
+                result.innerHTML = json.body && json.body.message ? json.body.message : "¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.";
+                result.className = "text-green-600";
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+                result.className = "text-red-600";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+            result.className = "text-red-600";
+        })
+        .then(() => {
+            form.reset();
+            setTimeout(() => {
+                result.innerHTML = "";
+                result.className = "";
+            }, 3000);
+        });
+    });
+</script>
+
+
+<script src="https://web3forms.com/client/script.js" async defer></script>

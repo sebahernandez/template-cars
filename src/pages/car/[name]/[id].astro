@@ -1,0 +1,138 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCarsByIds} from "../../../services/automotive";
+
+const { id, name } = Astro.params;// Extraemos el id de la URL
+const response = await getCarsByIds({ id }); // Obtenemos el coche por id
+const car = response.data; // Extraemos los datos del coche
+
+
+if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
+  throw new Error('Vehicle name in URL does not match actual vehicle name');
+}
+---
+<Layout title=`${car.name}`>
+  <div class="container mx-auto px-4 py-10">
+    <div
+      class="flex flex-col md:flex-row items-start md:items-center bg-gray-800 p-6 rounded-lg shadow-lg"
+    >
+      <!-- Imagen del Vehículo -->
+      <div class="w-full md:w-1/2">
+        <h1 class="text-2xl font-bold text-white mb-2">{car.name}</h1>
+        <div>
+            <div id="main-slider" class="splide" aria-label="Basic Structure Example">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    {
+                        car.imageGallery.map((image:any) => (
+                            <li class="splide__slide">
+                            <img src={image.imageUrl} alt={image.name} class="w-full h-auto rounded-lg mb-4 md:mb-0 md:mr-6" />
+                            </li>
+                        ))
+                    }
+                  </ul>
+                </div>
+                <div id="thumbnail-slider" class="splide mt-3">
+                    <div class="splide__track">
+                      <ul class="splide__list ">
+                        {
+                            car.imageGallery.map((image:any) => (
+                                <li class="splide__slide">
+                                <img src={image.imageUrl} alt={image.name} class="w-full h-auto rounded-lg mb-4 md:mb-0 md:mr-6" />
+                                </li>
+                            ))
+                        }
+                      </ul>
+                    </div>
+                </div>
+
+              </div>
+
+        <!--   <img
+            src={car.imageUrl}
+            alt={car.name}
+            class="w-full h-auto rounded-lg mb-4 md:mb-0 md:mr-6"
+          /> -->
+        </div>
+        <ul class="flex flex-wrap items-center mt-5">
+        
+          <li class="text-lg text-white m-2">
+            Ubicación:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+              >{car.location}</span
+            >
+          </li>
+          <li class="text-lg text-white m-2">
+            Kilometraje:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+              >{car.miles}</span
+            >
+          </li>
+          <li class="text-lg text-white m-2">
+            Combustible:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+              >{car.fuelType}</span
+            >
+          </li>
+          <li class="text-lg text-white m-2">
+            Transmisión: <span class="bg-slate-700 rounded-xl p-2 ml-2"
+              >{car.transmission}</span
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Detalles del Vehículo -->
+      <div class="w-full md:w-1/2  md:p-10">
+        <div class="flex items-center justify-start">
+          
+          {car.available ? (
+            <p class="rounded-sm bg-green-200 px-5 py-2 text-sm font-semibold text-green-600 ml-2">Disponible</p>
+          ) : (
+            <p class="rounded-sm bg-red-200 px-5 py-2 text-sm font-semibold text-red-600 ml-2">Vendido</p>
+          )}
+        </div>
+        <div class="my-5">
+           <h2 class="text-xl md:text-2xl text-white p-3 my-5 bg-slate-900 rounded-lg"> Precio:{car.price.replace(/,/g, ".")}</h2>
+          
+          <p class="text-lg text-white mb-4"> {car.description}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+
+<script>
+    import "@splidejs/splide/css";
+    import Splide from "@splidejs/splide";
+    
+let main = new Splide( '#main-slider', {
+  type       : 'fade',
+  heightRatio: 0.5,
+  pagination : false,
+  arrows     : false,
+  cover      : true,
+} );
+
+let thumbnails = new Splide( '#thumbnail-slider', {
+  rewind          : true,
+  fixedWidth      : 104,
+  fixedHeight     : 58,
+  isNavigation    : true,
+  gap             : 10,
+  focus           : 'center',
+  pagination      : false,
+  cover           : true,
+  dragMinThreshold: {
+    mouse: 4,
+    touch: 10,
+  },
+  breakpoints : {
+    640: {
+      fixedWidth  : 66,
+      fixedHeight : 38,
+    },
+  },
+} );
+
+main.sync( thumbnails );
+main.mount();
+thumbnails.mount();
+</script>
