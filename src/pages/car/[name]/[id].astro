@@ -14,7 +14,7 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
 <Layout title=`${car.name}`>
   <div class="container mx-auto px-4 py-10">
     <div
-      class="flex flex-col md:flex-row items-start md:items-center bg-gray-800 p-6 rounded-lg shadow-lg"
+      class="flex flex-col md:flex-row items-start md:items-start bg-gray-800 p-6 rounded-lg shadow-lg"
     >
       <!-- Imagen del Vehículo -->
       <div class="w-full md:w-1/2">
@@ -54,29 +54,7 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
             class="w-full h-auto rounded-lg mb-4 md:mb-0 md:mr-6"
           /> -->
         </div>
-        <ul class="flex flex-wrap items-center mt-5">
-        
-          <li class="text-lg text-white m-2">
-            Ubicación:<span class="bg-slate-700 rounded-xl p-2 ml-2"
-              >{car.location}</span
-            >
-          </li>
-          <li class="text-lg text-white m-2">
-            Kilometraje:<span class="bg-slate-700 rounded-xl p-2 ml-2"
-              >{car.miles}</span
-            >
-          </li>
-          <li class="text-lg text-white m-2">
-            Combustible:<span class="bg-slate-700 rounded-xl p-2 ml-2"
-              >{car.fuelType}</span
-            >
-          </li>
-          <li class="text-lg text-white m-2">
-            Transmisión: <span class="bg-slate-700 rounded-xl p-2 ml-2"
-              >{car.transmission}</span
-            >
-          </li>
-        </ul>
+       
       </div>
       <!-- Detalles del Vehículo -->
       <div class="w-full md:w-1/2  md:p-10">
@@ -89,9 +67,31 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
           )}
         </div>
         <div class="my-5">
-           <h2 class="text-xl md:text-2xl text-white p-3 my-5 bg-slate-900 rounded-lg"> Precio:{car.price.replace(/,/g, ".")}</h2>
-          
-          <p class="text-lg text-white mb-4"> {car.description}</p>
+           <h2 class="text-xl md:text-2xl text-slate-900 p-3 my-5 bg-white rounded-lg"> Precio:{car.price.replace(/,/g, ".")}</h2>
+           <ul class="flex flex-wrap items-center mt-5">
+        
+            <li class="text-lg text-white m-2">
+              Ubicación:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+                >{car.location}</span
+              >
+            </li>
+            <li class="text-lg text-white m-2">
+              Kilometraje:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+                >{car.miles}</span
+              >
+            </li>
+            <li class="text-lg text-white m-2">
+              Combustible:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+                >{car.fuelType}</span
+              >
+            </li>
+            <li class="text-lg text-white m-2">
+              Transmisión: <span class="bg-slate-700 rounded-xl p-2 ml-2"
+                >{car.transmission}</span
+              >
+            </li>
+          </ul>
+          <p class="text-lg text-white mb-4 p-1 pt-5"> {car.description}</p>
         </div>
       </div>
     </div>
@@ -105,7 +105,7 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
     
 let main = new Splide( '#main-slider', {
   type       : 'fade',
-  heightRatio: 0.5,
+  heightRatio: 0.75,
   pagination : false,
   arrows     : false,
   cover      : true,
