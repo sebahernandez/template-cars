@@ -1,9 +1,45 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import ContactForm from "../components/ContactForm.astro"
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
+
 <Layout title="Contacto">
   <div class="container mx-auto py-10">
-    <ContactForm titulo="Contacto" />
+    <div class="flex flex-col md:flex-row">
+      <div class="bg-slate-800 w-full md:w-1/2 p- flex flex-col justify-center p-5">
+        <h1 class="text-white text-4xl py-2">Automotive Consulting</h1>
+        <p class="text-white py-5 text-xl">Escríbenos si tienes alguna duda o si quiere vender su automovil de forma segura y confiable 
+          con nosotros, contamosc con una amplia experiencia y conocimiento en el rubro automotriz.
+        </p>
+       <div class="py-2">
+        <h2 class="text-white text-xl">Escríbenos a:</h2>
+        <p class="text-white">roco.solange@automotiveconsulting.cl</p>
+       </div>
+        <div class="py-2">
+          <h2 class="text-white text-xl py-2">Llámanos al:</h2>
+          <p class="text-white"> +569 7622 5094</p>
+        </div>
+
+        <div class="py-2">
+          <h2 class="text-white text-xl">Dirección:</h2>
+          <p class="text-white">Camino El Alba 8760 OF 304, Las Condes</p>
+        </div>
+       
+        <div>
+          <div class="social">
+
+          </div>
+        </div>
+     
+      </div>
+      <div class="w-full md:w-1/2">
+        <ContactForm titulo="Contacto" />
+      </div>
+    </div>
+    <div class="relative h-[400px] w-full mt-5">
+      <div class="mapa py-5">
+        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.6442885963106!2d-70.54716412381586!3d-33.406443273406964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cebdfd27eea9%3A0x40570cf4853f3d07!2sCam.%20El%20Alba%208760%2C%20OF%20304%2C%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1720645695691!5m2!1ses-419!2scl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
   </div>
 </Layout>

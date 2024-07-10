@@ -14,7 +14,7 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
 <Layout title=`${car.name}`>
   <div class="container mx-auto px-4 py-10">
     <div
-      class="flex flex-col md:flex-row items-start md:items-start bg-gray-800 p-6 rounded-lg shadow-lg"
+      class="flex flex-col md:flex-row items-start md:items-start bg-gray-800 p-6 shadow-lg"
     >
       <!-- Imagen del Vehículo -->
       <div class="w-full md:w-1/2">
@@ -61,37 +61,39 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
         <div class="flex items-center justify-start">
           
           {car.available ? (
-            <p class="rounded-sm bg-green-200 px-5 py-2 text-sm font-semibold text-green-600 ml-2">Disponible</p>
+            <p class=" bg-green-200 px-5 py-2 text-sm font-semibold text-green-600">Disponible</p>
           ) : (
-            <p class="rounded-sm bg-red-200 px-5 py-2 text-sm font-semibold text-red-600 ml-2">Vendido</p>
+            <p class=" bg-red-200 px-5 py-2 text-sm font-semibold text-red-600 ">Vendido</p>
           )}
         </div>
         <div class="my-5">
-           <h2 class="text-xl md:text-2xl text-slate-900 p-3 my-5 bg-white rounded-lg"> Precio:{car.price.replace(/,/g, ".")}</h2>
-           <ul class="flex flex-wrap items-center mt-5">
+           <h2 class="text-xl md:text-2xl text-slate-900 p-3 my-5 bg-white inline-block "> Precio:${car.price.replace(/,/g, ".")}</h2>
+           <h2 class="pt-5 text-white text-xl">Características:</h2>
+           <ul class="flex flex-col mt-5">
         
-            <li class="text-lg text-white m-2">
-              Ubicación:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+            <li class="text-lg text-white mb-5">
+              Ubicación:<span class="bg-slate-700  p-2 ml-2"
                 >{car.location}</span
               >
             </li>
-            <li class="text-lg text-white m-2">
-              Kilometraje:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+            <li class="text-lg text-white mb-5">
+              Kilometraje:<span class="bg-slate-700  p-2 ml-2"
                 >{car.miles}</span
               >
             </li>
-            <li class="text-lg text-white m-2">
-              Combustible:<span class="bg-slate-700 rounded-xl p-2 ml-2"
+            <li class="text-lg text-white mb-5">
+              Combustible:<span class="bg-slate-700  p-2 ml-2"
                 >{car.fuelType}</span
               >
             </li>
-            <li class="text-lg text-white m-2">
-              Transmisión: <span class="bg-slate-700 rounded-xl p-2 ml-2"
+            <li class="text-lg text-white mb-5">
+              Transmisión: <span class="bg-slate-700 p-2 ml-2"
                 >{car.transmission}</span
               >
             </li>
           </ul>
-          <p class="text-lg text-white mb-4 p-1 pt-5"> {car.description}</p>
+          <h2 class="pt-5 text-white text-xl">Descripción:</h2>
+          <p class="text-sm text-white mb-4 p-1 pt-5"> {car.description}</p>
         </div>
       </div>
     </div>
