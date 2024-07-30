@@ -1,221 +1,134 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import IconCheck from "../components/icons/IconCheck.astro";
+import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro"
-
+import CarIcon from "../components/icons/CarIcon.astro";
+import UsersIcons from "../components/icons/UsersIcons.astro";
+import IconText from "../components/icons/IconText.astro";
+import SteamIcon from "../components/icons/SteamIcon.astro";
+import ShakeIcon from "../components/icons/ShakeIcon.astro";
 const {titulo} = Astro.props
 ---
 
 <Layout title="Nosotros">
-  <section class="container mx-auto flex flex-col py-10 md:flex-row">
-    <div class="py-5 w-full md:w-1/2 justify-center flex flex-col md:py-10">
-      <div class="flex flex-col text-xl py-5">
-        <small class=" text-white text-center md:text-left">Automotive Consulting:</small>
-        <h1 class="text-2xl font-bold text-center pb-2 px-2  text-white md:px-2 md:text-6xl md:pb-2 md:text-left">
+  <section class="py-10">
+    <div class="relative h-full w-full bg-slate-950"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div></div>
+    <div class="container mx-auto flex flex-col md:flex-row items-center">
+      <div class="flex flex-col text-xl py-5 text-white w-full md:w-1/2">
+        <small class="text-center md:text-left">Automotive Consulting:</small>
+        <h1 class="text-3xl font-bold text-center pb-2 md:text-6xl md:pb-2 md:text-left">
           Expertos en Asesoría Automotriz
         </h1>
+        <p class="px-5 text-sm text-center md:text-left md:px-[0px] md:text-xl text-balance">
+          Con más de 20 años de experiencia, liderados por la especialista Solange
+          Roco, te acompañamos en cada paso para comprar o vender tu vehículo de
+          forma fácil y segura.
+        </p>
+        
       </div>
-      <p class="text-white text-sm text-center md:text-left md:px-[0px] md:text-xl text-balance">
-        Con más de 20 años de experiencia, liderados por la especialista Solange
-        Roco, te acompañamos en cada paso para comprar o vender tu vehículo de
-        forma fácil y segura.
-      </p>
-    </div>
-
-    <div class="w-full md:w-1/2 flex justify-end">
-      <img
-        src="/images/girl-car.webp"
-        alt="Nosotros"
-        class="object-cover"
-        width="600"
-        height="333"
-      />
+      <div class="w-full md:w-1/2 flex justify-end px-5">
+        <ContactForm titulo="contáctanos"/>
+      </div>
     </div>
   </section>
 
-  <section class="container mx-auto">
-    <h2 class="text-white text-center text-xl py-10 md:text-4xl">
+
+  <section class="pt-20 bg-white">
+    <h2 class="text-black text-center text-3xl md:text-6xl py-3">
       ¿Por qué elegirnos?
     </h2>
-    <p class="text-white text-center text-xl px-0 md:px-[200px] md:text-2xl">
+    <p class="text-black text-center text-xl px-0 md:text-xl md:px-[400px]">
       En Automotive Consulting, somos tu mejor aliado para la compra y venta de
       vehículos.<br /> Nuestra fundadora, Solange Roco, y su equipo de expertos,
       te brindarán una atención personalizada y profesional, asegurando que encuentres
       el vehículo perfecto o realices la mejor venta.
     </p>
+  </section>
+  
 
+  <section class="bg-white">
     <!-- component -->
-    <div class="relative z-20 py-[100px]">
+    <div class="container mx-auto relative z-20 py-0 md:py-[100px]">
       <div class="mx-auto max-w-container px-4 pb-16 sm:px-6 lg:px-8">
         <div
-          class="relative mx-auto grid max-w-[40rem] grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2"
+          class="relative mx-auto grid max-w-[40rem] grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2 "
         >
-          <div class="ml-3 text-center flex flex-col items-center">
-            <div class="py-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-car"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                <path
-                  d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"
-                ></path>
-              </svg>
-            </div>
-            <h2 class="text-2xl font-semibold leading-6 text-white">
-              20 Años de Experiencia:
-            </h2>
+          <IconText
+            title="20 Años de Experiencia"
+            subtitle="Amplio conocimiento del mercado automotriz."
+            iconWidth="64"
+            iconHeight="64"
+            icon={CarIcon}
+          />
 
-            <p class="mt-2 text-xl leading-6 text-white py-2">
-              Amplio conocimiento del mercado automotriz.
-            </p>
+          <div class="ml-3 text-center flex flex-col items-center">
+            <IconText
+              title="Servicio Completo"
+              subtitle="Nos ocupamos de todo, desde la selección hasta los trámites finales."
+              iconWidth="64"
+              iconHeight="64"
+              icon={UsersIcons}
+            />
           </div>
 
           <div class="ml-3 text-center flex flex-col items-center">
-            <div class="py-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-users"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-              </svg>
-            </div>
-            <h2 class="text-2xl font-semibold leading-6 text-white">
-              Asesoría Personalizada:
-            </h2>
-            <p class="mt-2 text-xl leading-6 text-white py-2">
-              Solange Roco y su equipo te guiarán en cada etapa del proceso.
-            </p>
+            <IconText
+              title="Atención Personalizada"
+              subtitle="Te acompañamos en cada paso, siempre a tu disposición."
+              iconWidth="64"
+              iconHeight="64"
+              icon={SteamIcon}
+            />
           </div>
 
           <div class="ml-3 text-center flex flex-col items-center">
-            <div class="py-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-steam"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M12 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                <path d="M4 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                <path d="M20 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                <path d="M12 20m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-                <path d="M5.5 5.5l3 3"></path>
-                <path d="M15.5 15.5l3 3"></path>
-                <path d="M18.5 5.5l-3 3"></path>
-                <path d="M8.5 15.5l-3 3"></path>
-              </svg>
-            </div>
-            <h2 class="text-2xl font-semibold leading-6 text-white">
-              Servicio Completo:
-            </h2>
-            <p class="mt-2 text-xl leading-6 text-white py-2">
-              Nos ocupamos de todo, desde la selección hasta los trámites
-              finales.
-            </p>
-          </div>
-
-          <div class="ml-3 text-center flex flex-col items-center">
-            <div class="py-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-heart-handshake"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
-                ></path>
-                <path
-                  d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25"
-                ></path>
-                <path d="M12.5 15.5l2 2"></path>
-                <path d="M15 13l2 2"></path>
-              </svg>
-            </div>
-
-            <h2 class="font-semibold leading-6 text-white text-2xl">
-              Confianza y Transparencia:
-            </h2>
-            <p class="mt-2 text-xl leading-6 text-white py-2">
-              Operaciones claras y seguras, siempre a tu favor.
-            </p>
+            <IconText
+              title="Equipo de Expertos"
+              subtitle="Profesionales con amplia experiencia en el rubro."
+              iconWidth="64"
+              iconHeight="64"
+              icon={ShakeIcon}
+            />
           </div>
         </div>
       </div>
     </div>
-     <div class="flex flex-col md:flex-row ">
-      <div class="w-full pb-10 flex flex-col justify-center">
-        <h3 class="text-white text-center text-2xl md:text-left md:text-4xl lg:text-6xl pb-6 md:pb-10">Nuestro Compromiso</h3>
-        <p class="text-white text-lg text-center md:text-left md:text-2xl lg:text-4xl">En Automotive Consulting, te ofrecemos:</p>
-        <ul class="text-white py-5 px-10 md:px-0">
-            <li class="py-2 flex text-xl md:text-lg lg:text-xl"><IconCheck color="#ffffff"/>
-              <div>
-                <strong> Inventario Variado:</strong> <br> Gran selección de vehículos disponibles. 
-              </div>
-            
-            </li>
-            <li class="py-2 flex  text-xl md:text-lg lg:text-xl"><IconCheck color="#ffffff"/>
-             <div>
-              <strong> Trámites Simplificados:</strong> <br>  Gestión rápida y sin complicaciones.
-             </div>
-            
-            </li>
-            <li class="py-2 flex  text-xl md:text-lg lg:text-xl"><IconCheck color="#ffffff"/>
-             <div>
-              <strong> Opciones de Financiamiento:</strong> <br> Facilidades de pago adaptadas a ti.
-             </div>
-            
-            </li>
-            <li class="py-2 flex text-xl md:text-lg lg:text-xl"><IconCheck color="#ffffff"/>
-            <div>
-              <strong> Soporte Constante:</strong> <br> Siempre estamos aquí para ayudarte.
-            </div>
-             
-            </li>
-        </ul>
-    </div>
-    
-
-      <div class="w-full md:w-1/2 py-5 px-2 ">
-        <ContactForm titulo="contáctanos"/>
-      </div>
-    </div>
   </section>
+
+  <section class="py-10 bg-white">
+    <div class="container mx-auto flex flex-col md:flex-row ">
+      <div class="w-full flex flex-col justify-center text-black">
+        <h3 class="text-center text-3xl pb-0 md:text-center md:text-4xl lg:text-6xl md:pb-6">Nuestro Compromiso</h3>
+        <p class="text-lg text-center py-5 md:text-center md:text-xl md:py-10">En Automotive Consulting, te ofrecemos:</p>
+        <ul class="px-10 md:px-0 flex flex-col md:flex-row justify-between">
+          <li class="py-2 flex text-xl md:text-lg lg:text-xl w-full md:w-auto">
+            <IconCheck color="#000000"/>
+            <div>
+              <strong>Inventario Variado:</strong> <br> Gran selección de vehículos disponibles.
+            </div>
+          </li>
+          <li class="py-2 flex text-xl md:text-lg lg:text-xl w-full md:w-auto">
+            <IconCheck color="#000000"/>
+            <div>
+              <strong>Trámites Simplificados:</strong> <br> Gestión rápida y sin complicaciones.
+            </div>
+          </li>
+          <li class="py-2 flex text-xl md:text-lg lg:text-xl w-full md:w-auto ">
+            <IconCheck color="#000000"/>
+            <div>
+              <strong>Opciones de Financiamiento:</strong> <br> Facilidades de pago adaptadas a ti.
+            </div>
+          </li>
+          <li class="py-2 flex text-xl md:text-lg lg:text-xl w-full md:w-auto ">
+            <IconCheck color="#000000"/>
+            <div>
+              <strong>Soporte Constante:</strong> <br> Siempre estamos aquí para ayudarte.
+            </div>
+          </li>
+        </ul>
+        
+    </div>
+    </div>
+  </section> 
 </Layout>
+
