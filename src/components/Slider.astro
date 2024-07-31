@@ -1,11 +1,11 @@
 
-<section>
+<section class="pt-[240px] md:pt-[198px]">
   <section id="slider2" class="splide" aria-label="Splide Basic HTML Example">
     <div class="splide__track">
       <ul class="splide__list">
-          <li class="splide__slide"><img src="/images/banners/banner1.png" alt="slide 1" /></li>
-          <li class="splide__slide"><img src="/images/banners/banner2.png" alt="slide 2" /></li>
-          <li class="splide__slide"><img src="/images/banners/banner3.png" alt="slide 3" /></li>
+          <li class="splide__slide"><img src="/images/banners/banner1.png" alt="slide 1"/></li>
+          <li class="splide__slide"><img src="/images/banners/banner2.png" alt="slide 2"/></li>
+          <li class="splide__slide"><img src="/images/banners/banner3.png" alt="slide 3"/></li>
       </ul>
 
       <script>
@@ -26,3 +26,18 @@
     </div>
   </section>
 </section>
+
+<style>
+  .splide__slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width:468px){
+    .splide__slide img {
+      height:auto;
+      object-fit: cover;
+    }
+  }
+</style>
