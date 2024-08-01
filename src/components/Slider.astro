@@ -1,5 +1,5 @@
 
-<section class="pt-[240px] md:pt-[198px]">
+<section class="pt-[220px] md:pt-[198px]">
   <section id="slider2" class="splide" aria-label="Splide Basic HTML Example">
     <div class="splide__track">
       <ul class="splide__list">
@@ -12,6 +12,7 @@
         import "@splidejs/splide/css";
         import Splide from "@splidejs/splide";
 
+
         let slider = new Splide("#slider2", {
           type: "loop",
           gap: "5vw",
@@ -20,6 +21,7 @@
           interval: 5000,
           pauseOnHover: false,
           perPage: 1,
+          arrows:false,
         });
         slider.mount();
       </script>
@@ -40,4 +42,5 @@
       object-fit: cover;
     }
   }
+
 </style>
