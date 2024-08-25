@@ -11,7 +11,7 @@ if (name !== car.name.toLowerCase().replace(/\s+/g, '-')) {
   throw new Error('Vehicle name in URL does not match actual vehicle name');
 }
 ---
-<Layout title=`${car.name}`>
+<Layout title=`Automotive Consulting - ${car.name}` description={car.description} image={car.imageUrl}>
   <div class="container mx-auto px-4 py-3 mt-[260px] md:mt-[240px]">
     <div
       class="flex flex-col md:flex-row items-start md:items-start p-6"
